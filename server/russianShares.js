@@ -1,5 +1,11 @@
 const axios = require('axios');
-const { constructActualDate, ruslUrl, historicalRusUrl } = require('./utils');
+const {
+  constructActualDate,
+  ruslUrl,
+  historicalRusUrl,
+  listOfRusTickers,
+  currentRusPrices,
+} = require('./utils');
 
 const getMoexShare = async (ticker) => {
   const formattedDate = constructActualDate(0);
@@ -33,7 +39,29 @@ const getMoexHistoryShare = async (ticker, period) => {
   }
 };
 
+const getAllMoexShares = async (index, currentRusPrices) => {
+  if (index === listOfRusTickers.length) {
+    return;
+  }
+  const share = await getMoexShare(listOfRusTickers[index]);
+  currentRusPrices.push(share);
+  index++;
+  await getAllMoexShares(index, currentRusPrices);
+};
+
+const getAllMoexHistoryShares = async (period, index, periodKey, historyRusData) => {
+  if (index === listOfRusTickers.length) {
+    return;
+  }
+  const share = await getMoexHistoryShare(listOfRusTickers[index], period);
+  historyRusData?.[periodKey]?.push(share);
+  index++;
+  await getAllMoexHistoryShares(period, index, periodKey, historyRusData);
+};
+
 module.exports = {
   getMoexShare,
   getMoexHistoryShare,
+  getAllMoexShares,
+  getAllMoexHistoryShares,
 };

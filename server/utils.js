@@ -1,4 +1,108 @@
 ///// RUSSIAN SHARES
+
+// Сбербанк
+// Лукойл
+// Газпром
+// Норильский никель
+// Новатэк
+// Yandex
+// Роснефть
+// Татнефть
+// TCS Group
+// Полюс
+// Магнит
+// МТС
+// Сургутнефтегаз
+// ФосАгро
+// Северсталь
+// ИнтерРао
+// Алроса
+// НЛМК
+// Мечел
+// Московская биржа
+// X5 RetailGroup ГДР
+// ПИК
+// Банк ВТБ
+// РУСАЛ
+// Ozon
+// ММК
+// Транснефть
+// Русгидро
+// VK
+// Ростелеком
+// МКБ
+// АФК Система
+// En+ Group
+// Fix Price
+// GlobalTrans
+// Русагро
+// Аэрофлот
+// Белуга Групп
+// Газпромнефть
+// Группа ЛСР
+// Группа Черкизово
+// Группа позитив
+// МВидео
+// Нижнекамскнефтехим ап
+// Пермэнергосбыт
+// Россети
+// Qiwi
+// Мать и дитя
+// Селиград
+
+const listOfRusTickers = [
+  'SBER',
+  'LKOH',
+  'GAZP',
+  'GMKN',
+  'NVTK',
+  'YNDX',
+  'ROSN',
+  'TATN',
+  'TCSG',
+  'PLZL',
+  'MGNT',
+  'MTSS',
+  'SNGS',
+  'PHOR',
+  'CHMF',
+  'IRAO',
+  'ALRS',
+  'NLMK',
+  'MTLR',
+  'MOEX',
+  'FIVE',
+  'PIKK',
+  'VTBR',
+  'RUAL',
+  'OZON',
+  'MAGN',
+  'TRNFP',
+  'HYDR',
+  'VKCO',
+  'RTKMP',
+  'CBOM',
+  'AFKS',
+  'ENPG',
+  'FIXP',
+  'GLTR',
+  'AGRO',
+  'AFLT',
+  'BELU',
+  'SIBN',
+  'LSRG',
+  'GCHE',
+  'POSI',
+  'MVID',
+  'NKNCP',
+  'PMSBP',
+  'FEES',
+  'QIWI',
+  'MDMG',
+  'SGZH',
+  'SELG',
+];
+
 const ruslUrl = (ticker) =>
   `https://iss.moex.com/iss/engines/stock/markets/shares/boards/TQBR/securities/${ticker}.json`;
 
@@ -16,6 +120,16 @@ const historicalForeignUrl = (ticker) =>
 ////// CONST TO COUNT AND TRANSFER
 
 const millisecDayKoef = 24 * 60 * 60 * 1000;
+
+const datePeriods = {
+  week: 7 * millisecDayKoef,
+  month: 30 * millisecDayKoef,
+  quart: 90 * millisecDayKoef,
+  half: 180 * millisecDayKoef,
+  year: 365 * millisecDayKoef,
+  year2: 730 * millisecDayKoef,
+  year3: 1095 * millisecDayKoef,
+};
 
 ////// FUNCTIONS
 
@@ -54,6 +168,8 @@ const identifyCorrectDate = (period) => {
 };
 
 module.exports = {
+  listOfRusTickers,
+  datePeriods,
   ruslUrl,
   historicalRusUrl,
   foreignUrl,
