@@ -1,11 +1,5 @@
 const axios = require('axios');
-const {
-  constructActualDate,
-  ruslUrl,
-  historicalRusUrl,
-  listOfRusTickers,
-  currentRusPrices,
-} = require('./utils');
+const { constructActualDate, ruslUrl, historicalRusUrl, listOfRusTickers } = require('./utils');
 
 const getMoexShare = async (ticker) => {
   const formattedDate = constructActualDate(0);

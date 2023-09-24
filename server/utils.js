@@ -101,6 +101,8 @@ const listOfRusTickers = [
   'MDMG',
   'SGZH',
   'SELG',
+  'FLOT',
+  'AKRN',
 ];
 
 const ruslUrl = (ticker) =>
